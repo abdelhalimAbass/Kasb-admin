@@ -1,0 +1,18 @@
+/pagesource = driver.getPageSource();
+        //WebElement x = driver.findElement(By.xpath("https://anb.gateway.mastercard.com/checkout/version/60/checkout.js"));
+        //x.sendKeys("01060673530");
+        //click the log in link
+        //By txtemail=By.name("email");
+        // var txtemailelement=driver.findElement(txtemail);
+        // txtemailelement.sendKeys("admin@example.com");
+        // By txtpass=By.name("password");
+        // var txtpasselement=driver.findElement(txtpass);
+        //txtpasselement.sendKeys("123123123");
+
+        //1-identifying the log in link by its ID
+       // By locator =By.id("submit-btn");
+        //bass this locator to driver which can help me to do operation
+        //WebElement element = driver.findElement(locator);
+
+        //3.perform operation on UI
+        //element.click();
