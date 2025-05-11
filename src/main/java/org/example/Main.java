@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.*;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.Select;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,6 +34,8 @@ public class Main {
         // select create fund button
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         driver.findElement(By.xpath("//*[@id=\"kt_wrapper\"]/div[2]/div/div/div[2]/div/div/div[2]/a")).click();
+        driver.findElement(By.id("translations_ar_performance_conditions_inp")).sendKeys("هذا هو معدل التغيير");
+        //
         //upload fud photo
         driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
         //driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[1]/div[1]/label"));
@@ -78,12 +81,39 @@ public class Main {
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         TinyMCEHelper.injectIntoTinyMCE(driver, "translations_ar_description_inp",
                 "<h1>Hello from helper!</h1><p>This is rich content.</p>");
+
+
+        //send information in english section
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/ul/li[2]/a")).click();
-        driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")).click();
-        Select selector=new Select(driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")));
-        selector.selectByIndex(0);
-        selector.selectByValue("selected");
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+        driver.findElement(By.id("translations_en_name_inp")).sendKeys("closed fund auto");
+        //driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+        TinyMCEHelper.injectIntoTinyMCE(driver, "translations_en_description_inp",
+                "<h1>Hello!</h1><p>This is rich content.</p>");
+        // for send in performance fieled
+        driver.findElement(By.id("translations_en_performance_conditions_inp")).sendKeys("this is performance");
+
+       // driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")).click();
+        //driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
+        //driver.findElement(By.id("select2-authorized-person-sp-result-6ut7-1")).click();
+//        Select selector=new Select(driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")));
+//        selector.selectByIndex(1);
+//        selector.selectByValue("Value Capital");
+//        WebElement combobox=driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span"));
+//        Select select=new Select(combobox);
+//        select.selectByVisibleText("Value Capital");
+        WebElement dropdown = driver.findElement(By.xpath("//*[@id='submitted-form']/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span"));
+        dropdown.click();
+        //Thread.sleep(100); // Replace with WebDriverWait in real test
+        //driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
+        WebDriverWait d= new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement option= d.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"select2-authorized-person-sp-result-u5mj-1\"]")));
+        option.click();
+        option.click();
+
+//        WebElement option = driver.findElement(By.xpath(""));
+//        option.click();
 
 
     }
