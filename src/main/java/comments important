@@ -16,3 +16,49 @@
 
         //3.perform operation on UI
         //element.click();
+        try { Thread.sleep(2000); } catch (InterruptedException e) {}
+        //
+        //        // الوصول لعنصر input
+        //        WebElement input1 = driver.findElement(By.xpath("//*[@id=\"terms_file_inp\"]"));
+        //
+        //        // التأكد من أنه ظاهر (لو مخفي)
+        //        JavascriptExecutor js1 = (JavascriptExecutor) driver;
+        //        js.executeScript("arguments[0].style.display = 'block';", input1);
+        //
+        //        // رفع الصورة
+        //        input1.sendKeys("\"C:\\Users\\Masarat\\Desktop\\document33.pdf\"");
+        //
+        //        // تحقق (اختياري)
+        //        String uploadedFileName1 = (String) js1.executeScript(
+        //                "return arguments[0].files[0]?.name;", input1);
+        //        System.out.println("Uploaded file: " + uploadedFileName1);
+
+               // driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")).click();
+                //driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
+                //driver.findElement(By.id("select2-authorized-person-sp-result-6ut7-1")).click();
+        //        Select selector=new Select(driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")));
+        //        selector.selectByIndex(1);
+        //        selector.selectByValue("Value Capital");
+        //        WebElement combobox=driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span"));
+        //        Select select=new Select(combobox);
+        //        select.selectByVisibleText("Value Capital");
+
+        //        WebElement dropdown = driver.findElement(By.xpath("//*[@id='submitted-form']/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span"));
+        //        dropdown.click();
+
+                //Thread.sleep(100); // Replace with WebDriverWait in real test
+
+                //driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
+            // try { Thread.sleep(2000); } catch (InterruptedException e) {}
+           //  driver.findElement(By.xpath("//*[@id=\"select2-authorized-person-sp-result-9o02-1\"]")).click();
+        //        WebElement option=driver.findElement (By.xpath("//*[@id=\"select2-authorized-person-sp-result-5yki-1\"]"));
+        //        option.click();
+        //        WebElement drop= driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[2]/span[2]/span[1]/span"));
+        //        drop.click();
+        //        try { Thread.sleep(2000); } catch (InterruptedException e) {}
+        //        WebElement optio=driver.findElement (By.xpath("///*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[2]/span[2]"));
+        //        optio.click();
+
+
+        //        WebElement option = driver.findElement(By.xpath(""));
+        //        option.click();

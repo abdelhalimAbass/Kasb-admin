@@ -11,11 +11,26 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.support.ui.Select;
 
 public class Main {
-    public static void main(String[] args) {
-       WebDriver driver =new ChromeDriver();
-       driver.manage().window().maximize();
-       signin(driver);
-       creatingfund(driver);
+    public static void main(String[] args) throws InterruptedException {
+
+
+        {
+            WebDriver driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            signin(driver);
+            deletedraft.delete(driver);
+        }
+        {
+            WebDriver driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            signin(driver);
+            deletedraft.delete(driver);
+        }
+        //creatingfund(driver);
+       // datasheetpage.create_datasheet(driver);
+      //  documentspage.ignore_documents(driver);
+       // bank_accpage.add_acc(driver);
+       // responsabilites_page.roles_admins(driver);
        //driver.quit();
     }
     public static void signin (WebDriver driver){
@@ -94,52 +109,7 @@ public class Main {
         // for send in performance fieled
         driver.findElement(By.id("translations_en_performance_conditions_inp")).sendKeys("this is performance");
         driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-//        try { Thread.sleep(2000); } catch (InterruptedException e) {}
 //
-//        // الوصول لعنصر input
-//        WebElement input1 = driver.findElement(By.xpath("//*[@id=\"terms_file_inp\"]"));
-//
-//        // التأكد من أنه ظاهر (لو مخفي)
-//        JavascriptExecutor js1 = (JavascriptExecutor) driver;
-//        js.executeScript("arguments[0].style.display = 'block';", input1);
-//
-//        // رفع الصورة
-//        input1.sendKeys("\"C:\\Users\\Masarat\\Desktop\\document33.pdf\"");
-//
-//        // تحقق (اختياري)
-//        String uploadedFileName1 = (String) js1.executeScript(
-//                "return arguments[0].files[0]?.name;", input1);
-//        System.out.println("Uploaded file: " + uploadedFileName1);
-
-       // driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")).click();
-        //driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
-        //driver.findElement(By.id("select2-authorized-person-sp-result-6ut7-1")).click();
-//        Select selector=new Select(driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span")));
-//        selector.selectByIndex(1);
-//        selector.selectByValue("Value Capital");
-//        WebElement combobox=driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span"));
-//        Select select=new Select(combobox);
-//        select.selectByVisibleText("Value Capital");
-
-//        WebElement dropdown = driver.findElement(By.xpath("//*[@id='submitted-form']/div[1]/div[2]/div/div/div[4]/div[1]/span[2]/span[1]/span"));
-//        dropdown.click();
-
-        //Thread.sleep(100); // Replace with WebDriverWait in real test
-
-        //driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
-    // try { Thread.sleep(2000); } catch (InterruptedException e) {}
-   //  driver.findElement(By.xpath("//*[@id=\"select2-authorized-person-sp-result-9o02-1\"]")).click();
-//        WebElement option=driver.findElement (By.xpath("//*[@id=\"select2-authorized-person-sp-result-5yki-1\"]"));
-//        option.click();
-//        WebElement drop= driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[2]/span[2]/span[1]/span"));
-//        drop.click();
-//        try { Thread.sleep(2000); } catch (InterruptedException e) {}
-//        WebElement optio=driver.findElement (By.xpath("///*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[4]/div[2]/span[2]"));
-//        optio.click();
-
-
-//        WebElement option = driver.findElement(By.xpath(""));
-//        option.click();
         global.wait_10(driver);
         WebElement fileupload= driver.findElement(By.id("terms_file_inp"));
         fileupload.sendKeys("C:\\Users\\Masarat\\Desktop\\document33.pdf");
@@ -199,7 +169,48 @@ public class Main {
         //entring launch date
         global.wait_10(driver);
         driver.findElement(By.xpath("//*[@id='launch_date_inp']")).sendKeys("02/25/2025");
-
+        //send inception price
+        driver.findElement(By.id("inception_price_inp")).sendKeys("100");
+        //select liqudity prefrences
+        global.wait_10(driver);
+        driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/div/div[7]/div[1]/span[2]/span[1]/span")).click();
+        driver.findElement(By.xpath("//li[contains(text(),'Daily')]")).click();
+        //entering cut of time
+        driver.findElement(By.id("cut_of_time_inp")).sendKeys("12:00PM");
+        //entring total issued unit
+        driver.findElement(By.id("units_count_inp")).sendKeys("1000");
+        //entring limited unit for each investor
+        driver.findElement(By.id("limit_units_investor_inp")).sendKeys("100");
+        //enting  NAV
+        driver.findElement(By.id("unit_price_inp")).sendKeys("100");
+        //entring minimumsubscription
+        driver.findElement(By.id("initial_investment_inp")).sendKeys("100");
+        //entring incrementail investment
+        driver.findElement(By.id("subsequent_investment_inp")).sendKeys("10");
+        //entring fun duration
+        driver.findElement(By.xpath("//input[@name='investment_years']")).sendKeys("1");
+        //management fees
+        driver.findElement(By.xpath("//input[@id='fund_fees_management_inp']")).sendKeys("0.0015");
+        //entering subscription fees
+        driver.findElement(By.xpath("//input[@id='fund_fees_subscription_inp']")).sendKeys("0.0015");
+        //entering distribution fees
+        driver.findElement(By.xpath("//input[@id='fund_fees_distribution_inp']")).sendKeys("0.0015");
+        //entering admin fees
+        driver.findElement(By.xpath("//input[@id='fund_fees_admin_inp']")).sendKeys("0.0015");
+        //entering performance fees
+        driver.findElement(By.xpath("//input[@id='fund_fees_performance_inp']")).sendKeys("0.0015");
+        //entering redemption fees
+        driver.findElement(By.xpath("//input[@id='fund_fees_redemption_inp']")).sendKeys("0.0015");
+        //select asset class
+        global.wait_10(driver);
+        driver.findElement(By.xpath("//*[@id=\"asset_classes_repeater\"]/div[1]/div/div/div/div[1]/span[2]/span[1]/span")).click();
+        //System.out.println("asset class arrive");
+        global.wait_10(driver);
+        driver.findElement(By.xpath("//li[contains(text(),' Multi investments')]")).click();
+        driver.findElement(By.id("asset_classes_repeater_0_percentage_inp")).sendKeys("100");
+        global.wait_10(driver);
+        driver.findElement(By.xpath("//*[@id=\"next-btn\"]/span[1]")).click();
+        //datasheetpage.create_datasheet(driver);
 
     }
 }
