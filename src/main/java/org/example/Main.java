@@ -14,24 +14,18 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
 
-        {
+
             WebDriver driver = new ChromeDriver();
             driver.manage().window().maximize();
             signin(driver);
-            deletedraft.delete(driver);
-        }
-        {
-            WebDriver driver = new ChromeDriver();
-            driver.manage().window().maximize();
-            signin(driver);
-            deletedraft.delete(driver);
-        }
-        //creatingfund(driver);
-       // datasheetpage.create_datasheet(driver);
-      //  documentspage.ignore_documents(driver);
-       // bank_accpage.add_acc(driver);
-       // responsabilites_page.roles_admins(driver);
-       //driver.quit();
+            //deletedraft.delete(driver);
+
+          creatingfund(driver);
+       datasheetpage.create_datasheet(driver);
+       documentspage.ignore_documents(driver);
+       bank_accpage.add_acc(driver);
+       responsabilites_page.roles_admins(driver);
+       driver.quit();
     }
     public static void signin (WebDriver driver){
         driver.get(global.url+"/login");
@@ -74,17 +68,13 @@ public class Main {
         //input.sendKeys("\"C:\\Users\\Masarat\\Desktop\\11.jpg\"");
         // load_photo.sendKeys("C:\\Users\\Masarat\\Desktop\\11");
         try { Thread.sleep(2000); } catch (InterruptedException e) {}
-
         // الوصول لعنصر input
         WebElement input = driver.findElement(By.xpath("//input[@type='file']"));
-
         // التأكد من أنه ظاهر (لو مخفي)
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.display = 'block';", input);
-
         // رفع الصورة
         input.sendKeys("C:\\Users\\Masarat\\Desktop\\11.jpg");
-
         // تحقق (اختياري)
         String uploadedFileName = (String) js.executeScript(
                 "return arguments[0].files[0]?.name;", input);
@@ -102,7 +92,7 @@ public class Main {
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         driver.findElement(By.xpath("//*[@id=\"submitted-form\"]/div[1]/div[2]/div/ul/li[2]/a")).click();
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-        driver.findElement(By.id("translations_en_name_inp")).sendKeys("closed fund auto");
+        driver.findElement(By.id("translations_en_name_inp")).sendKeys("test open fund ");
         //driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         TinyMCEHelper.injectIntoTinyMCE(driver, "translations_en_description_inp",
                 "<h1>Hello!</h1><p>This is rich content.</p>");
